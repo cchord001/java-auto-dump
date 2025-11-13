@@ -14,6 +14,5 @@ docker run -d \
   -p 8060:8060 \
   -v /data/java-heap:/app \
   -e TZ=Asia/Shanghai \
-  heap-dump-webhook:latest \
-  python webhook_server.py
+  heap-dump-webhook:latest 
 ```
