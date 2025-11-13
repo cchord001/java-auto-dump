@@ -1,0 +1,18 @@
+global:
+templates:
+- '/etc/alertmanager/*.tmpl'
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 1m
+  repeat_interval: 30m
+  receiver: webhook
+
+
+receivers:
+- name: webhook
+  webhook_configs: #可设置多个接收方
+  - url: 'http://webhook-dingtalk-svc:8060/dingtalk/webhook1/send'
+    send_resolved: true
+  - url: 'http://172.31.8.7:8060/webhook'  #heapdump服务地址
+    send_resolved: false
